@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kiruthika Venkatesan | SFMC Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #1a2e45;
+    --navy-light: #243b55;
+    --gold: #c9a84c;
+    --gold-light: #e4c97e;
+    --cream: #f5f0e8;
+    --cream-dark: #ede6d6;
+    --white: #ffffff;
+    --slate: #8499b0;
+    --text: #1a2e45;
+    --text-muted: #556b82;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(13, 27, 42, 0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    padding: 0 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; color: var(--gold);
+    letter-spacing: 0.04em;
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75); text-decoration: none;
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 100px 60px 60px;
+  }
+  .hero-bg-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-accent {
+    position: absolute; right: -120px; top: 50%; transform: translateY(-50%);
+    width: 620px; height: 620px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+  }
+  .hero-accent2 {
+    position: absolute; left: -80px; bottom: -80px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(36,59,85,0.6) 0%, transparent 70%);
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 780px; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold-light); font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 7px 16px; border-radius: 100px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-tag::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); display: block;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 700; color: var(--white);
+    line-height: 1.12; letter-spacing: -0.01em;
+    margin-bottom: 20px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-sub {
+    font-size: 1.05rem; color: var(--slate);
+    font-weight: 300; line-height: 1.75; max-width: 560px;
+    margin-bottom: 44px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-stats {
+    display: flex; gap: 48px;
+    animation: fadeUp 0.6s 0.3s ease both;
+    margin-bottom: 44px;
+  }
+  .stat-item { display: flex; flex-direction: column; gap: 4px; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: var(--gold);
+  }
+  .stat-label { font-size: 0.75rem; color: var(--slate); letter-spacing: 0.08em; text-transform: uppercase; }
+  .hero-divider {
+    width: 1px; height: 50px; background: rgba(201,168,76,0.25);
+    align-self: center;
+  }
+  .hero-ctas {
+    display: flex; gap: 16px;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--navy);
+    padding: 14px 30px; border-radius: 4px;
+    font-weight: 600; font-size: 0.85rem; letter-spacing: 0.06em;
+    text-transform: uppercase; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline {
+    border: 1px solid rgba(201,168,76,0.4); color: var(--gold-light);
+    padding: 14px 30px; border-radius: 4px;
+    font-weight: 500; font-size: 0.85rem; letter-spacing: 0.06em;
+    text-transform: uppercase; text-decoration: none;
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); transform: translateY(-2px); }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 96px 60px; }
+  .section-label {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .section-label::before {
+    content: ''; display: block; width: 28px; height: 2px; background: var(--gold);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+    font-weight: 700; color: var(--navy);
+    line-height: 1.2; margin-bottom: 56px;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--white); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+  }
+  .about-text p {
+    font-size: 1rem; line-height: 1.85; color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+  .about-text p strong { color: var(--text); font-weight: 600; }
+  .about-highlights {
+    display: flex; flex-direction: column; gap: 20px; margin-top: 36px;
+  }
+  .highlight-card {
+    display: flex; gap: 18px; align-items: flex-start;
+    padding: 20px 24px;
+    background: var(--cream); border-radius: 6px;
+    border-left: 3px solid var(--gold);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .highlight-card:hover { transform: translateX(4px); box-shadow: -4px 0 0 var(--gold); }
+  .hl-icon {
+    width: 40px; height: 40px; border-radius: 8px;
+    background: var(--navy); display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 1rem;
+  }
+  .hl-body h4 { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .hl-body p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+  .about-right { display: flex; flex-direction: column; gap: 28px; }
+  .info-block {
+    padding: 28px 32px;
+    background: var(--navy);
+    border-radius: 8px; color: var(--white);
+  }
+  .info-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; color: var(--gold); margin-bottom: 20px;
+  }
+  .info-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .info-list li {
+    display: flex; justify-content: space-between;
+    font-size: 0.84rem; padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .info-list li:last-child { border-bottom: none; padding-bottom: 0; }
+  .info-list .lbl { color: var(--slate); font-weight: 400; }
+  .info-list .val { color: var(--white); font-weight: 500; text-align: right; max-width: 200px; }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--cream); }
+  .projects-grid { display: flex; flex-direction: column; gap: 32px; }
+  .project-card {
+    background: var(--white);
+    border-radius: 8px; overflow: hidden;
+    border: 1px solid rgba(13,27,42,0.08);
+    transition: box-shadow 0.25s, transform 0.25s;
+    display: grid; grid-template-columns: 280px 1fr;
+  }
+  .project-card:hover { box-shadow: 0 12px 48px rgba(13,27,42,0.12); transform: translateY(-3px); }
+  .project-sidebar {
+    background: var(--navy); padding: 36px 28px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .project-num {
+    font-family: 'DM Mono', monospace; font-size: 0.72rem;
+    color: rgba(201,168,76,0.5); letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+  .project-sidebar h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem; color: var(--white);
+    line-height: 1.35; margin-bottom: 16px;
+  }
+  .project-meta { font-size: 0.78rem; color: var(--slate); line-height: 1.6; }
+  .project-meta span { display: block; }
+  .project-tags-sidebar { display: flex; flex-direction: column; gap: 6px; margin-top: 24px; }
+  .tag-s {
+    display: inline-flex; align-items: center;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--gold-light); font-size: 0.7rem;
+    padding: 4px 10px; border-radius: 3px;
+    font-family: 'DM Mono', monospace; letter-spacing: 0.05em;
+    width: fit-content;
+  }
+  .project-body { padding: 36px 40px; }
+  .project-body p {
+    font-size: 0.93rem; color: var(--text-muted);
+    line-height: 1.8; margin-bottom: 24px;
+  }
+  .project-achievements { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .project-achievements li {
+    display: flex; gap: 12px; align-items: flex-start;
+    font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;
+  }
+  .project-achievements li::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0; margin-top: 7px;
+  }
+  .project-achievements li strong { color: var(--navy); font-weight: 600; }
+  .project-impact {
+    margin-top: 24px; padding-top: 24px;
+    border-top: 1px solid var(--cream-dark);
+    display: flex; gap: 32px;
+  }
+  .impact-metric { text-align: center; }
+  .impact-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 700; color: var(--navy);
+    display: block;
+  }
+  .impact-lbl { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--white); }
+  .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .skill-category { margin-bottom: 36px; }
+  .skill-cat-title {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 16px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+  .skill-items { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-chip {
+    background: var(--cream); color: var(--text);
+    font-size: 0.8rem; font-weight: 500;
+    padding: 6px 14px; border-radius: 4px;
+    border: 1px solid rgba(13,27,42,0.1);
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    cursor: default;
+  }
+  .skill-chip:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  .skill-chip.featured {
+    background: var(--navy); color: var(--gold-light);
+    border-color: var(--navy);
+    font-weight: 600;
+  }
+
+  /* proficiency bars */
+  .proficiency-section { margin-top: 8px; }
+  .prof-item { margin-bottom: 18px; }
+  .prof-header { display: flex; justify-content: space-between; margin-bottom: 7px; }
+  .prof-name { font-size: 0.85rem; font-weight: 500; color: var(--text); }
+  .prof-pct { font-size: 0.78rem; color: var(--text-muted); font-family: 'DM Mono', monospace; }
+  .prof-bar { height: 4px; background: var(--cream-dark); border-radius: 2px; overflow: hidden; }
+  .prof-fill {
+    height: 100%; background: linear-gradient(90deg, var(--navy), var(--gold));
+    border-radius: 2px; width: 0;
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  /* ── CERTIFICATIONS & EDUCATION ── */
+  #certs { background: var(--navy); }
+  #certs .section-title { color: var(--white); }
+  #certs .section-label { color: var(--gold); }
+  .certs-edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+
+  .cert-cards { display: flex; flex-direction: column; gap: 14px; }
+  .cert-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 6px; padding: 18px 22px;
+    display: flex; align-items: center; gap: 16px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .cert-card:hover { background: rgba(201,168,76,0.08); border-color: rgba(201,168,76,0.35); }
+  .cert-icon {
+    width: 44px; height: 44px; border-radius: 8px;
+    background: rgba(201,168,76,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .cert-info h4 { font-size: 0.88rem; font-weight: 600; color: var(--white); margin-bottom: 3px; }
+  .cert-info p { font-size: 0.75rem; color: var(--slate); }
+  .cert-badge {
+    margin-left: auto; flex-shrink: 0;
+    background: rgba(201,168,76,0.15); color: var(--gold-light);
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 4px 10px; border-radius: 100px;
+    border: 1px solid rgba(201,168,76,0.25);
+  }
+
+  .edu-timeline { display: flex; flex-direction: column; gap: 0; }
+  .edu-item {
+    display: flex; gap: 24px; padding-bottom: 36px;
+    position: relative;
+  }
+  .edu-item:last-child { padding-bottom: 0; }
+  .edu-line {
+    display: flex; flex-direction: column; align-items: center; flex-shrink: 0;
+  }
+  .edu-dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--gold); border: 2px solid var(--navy-mid);
+    flex-shrink: 0; margin-top: 4px;
+  }
+  .edu-connector {
+    width: 2px; flex-grow: 1; background: rgba(201,168,76,0.2);
+    margin-top: 6px;
+  }
+  .edu-item:last-child .edu-connector { display: none; }
+  .edu-content h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 4px;
+  }
+  .edu-content .inst { font-size: 0.85rem; color: var(--gold-light); margin-bottom: 6px; }
+  .edu-content .dates { font-size: 0.75rem; color: var(--slate); font-family: 'DM Mono', monospace; }
+  .edu-content .desc { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-top: 8px; line-height: 1.6; }
+
+  /* ── CONTACT STRIP ── */
+  .contact-strip {
+    background: var(--gold); padding: 56px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .contact-strip h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; color: var(--navy); font-weight: 700;
+  }
+  .contact-strip p { font-size: 0.9rem; color: rgba(13,27,42,0.7); margin-top: 6px; }
+  .contact-actions { display: flex; gap: 14px; }
+  .btn-navy {
+    background: var(--navy); color: var(--gold);
+    padding: 13px 28px; border-radius: 4px;
+    font-weight: 600; font-size: 0.82rem; letter-spacing: 0.06em;
+    text-transform: uppercase; text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-navy:hover { background: var(--navy-mid); }
+  .btn-ghost-navy {
+    border: 2px solid var(--navy); color: var(--navy);
+    padding: 11px 28px; border-radius: 4px;
+    font-weight: 600; font-size: 0.82rem; letter-spacing: 0.06em;
+    text-transform: uppercase; text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-ghost-navy:hover { background: rgba(13,27,42,0.1); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy); padding: 28px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(201,168,76,0.12);
+  }
+  footer p { font-size: 0.78rem; color: var(--slate); }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    section { padding: 72px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .about-grid, .skills-layout, .certs-edu-grid { grid-template-columns: 1fr; gap: 40px; }
+    .project-card { grid-template-columns: 1fr; }
+    .contact-strip { flex-direction: column; gap: 28px; padding: 48px 24px; text-align: center; }
+    footer { flex-direction: column; gap: 10px; padding: 24px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Kiruthika Venkatesan</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certs">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-accent2"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Salesforce Marketing Cloud Expert</div>
+    <h1>Kiruthika<br><span>Venkatesan</span></h1>
+    <p class="hero-sub">SFMC Administrator & Architect specializing in enterprise marketing automation, multi-channel journey design, and data-driven personalization across regulated industries.</p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">5+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">98%+</span>
+        <span class="stat-label">Inbox Placement</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Global Regions</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">6</span>
+        <span class="stat-label">Certifications</span>
+      </div>
+    </div>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">View Projects →</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About Me</div>
+  <h2 class="section-title">Turning Marketing Vision<br>Into Platform Reality</h2>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I'm a <strong>Salesforce Marketing Cloud Administrator & Architect</strong> with 5+ years of experience designing, configuring, and scaling enterprise-grade marketing automation platforms. My expertise spans the full SFMC Engagement suite — from Journey Builder and Automation Studio to Contact Builder and advanced SQL-driven Data Extensions.</p>
+      <p>I bridge the gap between marketing strategy and technical execution. I translate complex business requirements into documented, scalable technical specs — then build them. I've delivered compliant, high-performance multi-channel journeys for clients in <strong>healthcare, financial services, and enterprise sectors</strong>, always within regulated environments like HITRUST, SOC 2, and ISO 13485.</p>
+      <p>Currently pursuing my <strong>M.S. in Information Technology at the University of Denver</strong>, I combine deep platform expertise with a continuous drive to stay at the forefront of marketing technology.</p>
+      <div class="about-highlights">
+        <div class="highlight-card">
+          <div class="hl-icon">🏗️</div>
+          <div class="hl-body">
+            <h4>Platform Architecture</h4>
+            <p>End-to-end SFMC design: data models, ETL flows, journey logic, and API integrations.</p>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="hl-icon">📊</div>
+          <div class="hl-body">
+            <h4>Data-Driven Segmentation</h4>
+            <p>Advanced SQL, relational Data Extensions, and precision audience targeting strategies.</p>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="hl-icon">🔒</div>
+          <div class="hl-body">
+            <h4>Compliance & Governance</h4>
+            <p>HITRUST, SOC 2 Type II, ISO 13485, CAN-SPAM, and GDPR compliant implementations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-right reveal">
+      <div class="info-block">
+        <h3>Contact & Details</h3>
+        <ul class="info-list">
+          <li><span class="lbl">Email</span><span class="val">kiruthikavenkat2704@gmail.com</span></li>
+          <li><span class="lbl">Phone</span><span class="val">720-813-5590</span></li>
+          <li><span class="lbl">Location</span><span class="val">USA</span></li>
+          <li><span class="lbl">Current Role</span><span class="val">SFMC Admin & Architect</span></li>
+          <li><span class="lbl">Availability</span><span class="val">Open to Opportunities</span></li>
+          <li><span class="lbl">Work Type</span><span class="val">Hybrid / On-site</span></li>
+        </ul>
+      </div>
+      <div class="info-block">
+        <h3>Core Expertise</h3>
+        <ul class="info-list">
+          <li><span class="lbl">Journey Builder</span><span class="val">Expert</span></li>
+          <li><span class="lbl">Automation Studio</span><span class="val">Expert</span></li>
+          <li><span class="lbl">SQL & Data Extensions</span><span class="val">Expert</span></li>
+          <li><span class="lbl">REST/SOAP API Integration</span><span class="val">Advanced</span></li>
+          <li><span class="lbl">MuleSoft</span><span class="val">Advanced</span></li>
+          <li><span class="lbl">HITRUST / SOC 2</span><span class="val">Experienced</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Featured Work</div>
+  <h2 class="section-title">Projects & Achievements</h2>
+  <div class="projects-grid">
+
+    <!-- Project 1 -->
+    <div class="project-card reveal">
+      <div class="project-sidebar">
+        <div>
+          <div class="project-num">PROJECT 01</div>
+          <h3>Enterprise SFMC Multi-Channel Journey Transformation</h3>
+          <div class="project-meta">
+            <span>📅 Duration: 18 Months</span>
+            <span>👤 Role: SFMC Technical Lead</span>
+            <span>🏥 Industry: Healthcare</span>
+          </div>
+        </div>
+        <div class="project-tags-sidebar">
+          <span class="tag-s">Journey Builder</span>
+          <span class="tag-s">Automation Studio</span>
+          <span class="tag-s">SQL Segmentation</span>
+          <span class="tag-s">MuleSoft API</span>
+          <span class="tag-s">HITRUST Compliant</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <p>Owned end-to-end SFMC Engagement platform architecture for a major healthcare client, designing and deploying multi-channel customer journeys across email, SMS, and push notifications spanning 3 global regional markets.</p>
+        <ul class="project-achievements">
+          <li>Designed complex <strong>Journey Builder workflows</strong> with multi-entry sources, decision splits, and engagement-based branching across 3 regional markets</li>
+          <li>Architected <strong>relational Data Extension models</strong> and optimized SQL segmentation queries, improving audience targeting accuracy by 42%</li>
+          <li>Built <strong>REST API + MuleSoft integration</strong> framework with Salesforce CRM for real-time personalization data sync and AMPscript-driven dynamic content</li>
+          <li>Achieved <strong>98%+ inbox placement</strong> through sender authentication, IP warming strategy, and proactive deliverability governance</li>
+          <li>Implemented full <strong>HITRUST and SOC 2 compliance</strong> across data flows, subscriber management, and platform access controls</li>
+          <li>Boosted <strong>email engagement rates by 30%</strong> via AMPscript personalization and Data Science–backed send-time optimization</li>
+        </ul>
+        <div class="project-impact">
+          <div class="impact-metric"><span class="impact-num">42%</span><span class="impact-lbl">Targeting Accuracy</span></div>
+          <div class="impact-metric"><span class="impact-num">98%+</span><span class="impact-lbl">Inbox Placement</span></div>
+          <div class="impact-metric"><span class="impact-num">30%</span><span class="impact-lbl">Engagement Lift</span></div>
+          <div class="impact-metric"><span class="impact-num">3</span><span class="impact-lbl">Global Regions</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card reveal">
+      <div class="project-sidebar">
+        <div>
+          <div class="project-num">PROJECT 02</div>
+          <h3>SFMC Data Architecture & CRM Integration Platform</h3>
+          <div class="project-meta">
+            <span>📅 Duration: 12 Months</span>
+            <span>👤 Role: Marketing Cloud Architect</span>
+            <span>🏢 Industry: Enterprise</span>
+          </div>
+        </div>
+        <div class="project-tags-sidebar">
+          <span class="tag-s">Contact Builder</span>
+          <span class="tag-s">Marketing Cloud Connect</span>
+          <span class="tag-s">ETL Design</span>
+          <span class="tag-s">Data Governance</span>
+          <span class="tag-s">SOC 2 Type II</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <p>Architected a scalable SFMC data infrastructure and CRM integration platform, establishing a single source of truth for marketing data with bi-directional Salesforce CRM sync and enterprise-grade governance controls.</p>
+        <ul class="project-achievements">
+          <li>Designed <strong>scalable Data Extension hierarchies</strong> — parent/child relational structures for subscriber, transaction, and behavioral data</li>
+          <li>Built <strong>Automation Studio import workflows</strong> with scheduled FTP-based data ingestion, transformation logic, and error handling</li>
+          <li>Implemented <strong>bi-directional CRM sync via Marketing Cloud Connect</strong>, ensuring real-time data alignment between SFMC and Salesforce Sales Cloud</li>
+          <li>Documented full <strong>ETL data flow architecture</strong> and data governance policies fully compliant with HITRUST and SOC 2 Type II standards</li>
+          <li>Reduced <strong>unsubscribe rates by 18%</strong> through SQL-driven suppression lists and precision audience segmentation strategies</li>
+          <li>Delivered <strong>SFMC platform training</strong> to a 6-member marketing operations team, covering journey design, data compliance, and governance</li>
+        </ul>
+        <div class="project-impact">
+          <div class="impact-metric"><span class="impact-num">18%</span><span class="impact-lbl">Unsub Reduction</span></div>
+          <div class="impact-metric"><span class="impact-num">100%</span><span class="impact-lbl">SOC 2 Compliant</span></div>
+          <div class="impact-metric"><span class="impact-num">6</span><span class="impact-lbl">Team Trained</span></div>
+          <div class="impact-metric"><span class="impact-num">Real-time</span><span class="impact-lbl">CRM Data Sync</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card reveal">
+      <div class="project-sidebar">
+        <div>
+          <div class="project-num">PROJECT 03</div>
+          <h3>Global CRM Modernization & Salesforce Integration</h3>
+          <div class="project-meta">
+            <span>📅 Duration: 28 Months</span>
+            <span>👤 Role: Technical Lead</span>
+            <span>🌍 Scope: 3 Global Regions</span>
+          </div>
+        </div>
+        <div class="project-tags-sidebar">
+          <span class="tag-s">Sales Cloud</span>
+          <span class="tag-s">REST APIs</span>
+          <span class="tag-s">Platform Events</span>
+          <span class="tag-s">CI/CD (Copado)</span>
+          <span class="tag-s">DevSecOps</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <p>Led a 28-month enterprise Salesforce modernization initiative as Technical Lead of a 12-member team, serving 3 global regions and building the CRM data foundation that powers all downstream SFMC marketing operations.</p>
+        <ul class="project-achievements">
+          <li>Improved <strong>sales pipeline visibility by 38%</strong> through redesigned Sales Cloud architecture with custom objects, automation, and reporting</li>
+          <li>Implemented <strong>enterprise-grade integration framework</strong> using REST APIs, Platform Events, and MuleSoft for near real-time cross-system data sync</li>
+          <li>Built scalable <strong>CRM data models and sharing rules</strong> that underpin SFMC subscriber data quality and segmentation accuracy</li>
+          <li>Established <strong>DevOps governance model</strong> using SFDX, Copado, and Git branching, reducing release cycle time by 35%</li>
+          <li>Reduced <strong>production incidents by 35%</strong> via centralized logging, exception handling frameworks, and automated monitoring alerts</li>
+          <li>Mentored and led <strong>12-member cross-regional team</strong>, enforcing code quality standards and 90%+ test coverage requirements</li>
+        </ul>
+        <div class="project-impact">
+          <div class="impact-metric"><span class="impact-num">38%</span><span class="impact-lbl">Pipeline Visibility</span></div>
+          <div class="impact-metric"><span class="impact-num">35%</span><span class="impact-lbl">Fewer Incidents</span></div>
+          <div class="impact-metric"><span class="impact-num">35%</span><span class="impact-lbl">Faster Releases</span></div>
+          <div class="impact-metric"><span class="impact-num">12</span><span class="impact-lbl">Team Members</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Technical Expertise</div>
+  <h2 class="section-title">Skills & Technologies</h2>
+  <div class="skills-layout">
+    <div class="reveal">
+      <div class="skill-category">
+        <div class="skill-cat-title">SFMC Platform</div>
+        <div class="skill-items">
+          <span class="skill-chip featured">Journey Builder</span>
+          <span class="skill-chip featured">Automation Studio</span>
+          <span class="skill-chip featured">Contact Builder</span>
+          <span class="skill-chip featured">Email Studio</span>
+          <span class="skill-chip">Mobile Studio</span>
+          <span class="skill-chip featured">Data Extensions</span>
+          <span class="skill-chip">AMPscript</span>
+          <span class="skill-chip">SSJS</span>
+          <span class="skill-chip">Marketing Cloud Connect</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Data & SQL</div>
+        <div class="skill-items">
+          <span class="skill-chip featured">Advanced SQL</span>
+          <span class="skill-chip featured">Audience Segmentation</span>
+          <span class="skill-chip">Relational Data Modeling</span>
+          <span class="skill-chip">ETL Design</span>
+          <span class="skill-chip">CRM Data Models</span>
+          <span class="skill-chip">Data Extension Design</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Integration & APIs</div>
+        <div class="skill-items">
+          <span class="skill-chip featured">REST APIs</span>
+          <span class="skill-chip">SOAP APIs</span>
+          <span class="skill-chip featured">MuleSoft</span>
+          <span class="skill-chip">OAuth 2.0</span>
+          <span class="skill-chip">Platform Events</span>
+          <span class="skill-chip">Salesforce CRM</span>
+          <span class="skill-chip">Pardot</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="skill-category">
+        <div class="skill-cat-title">Proficiency Levels</div>
+        <div class="proficiency-section">
+          <div class="prof-item"><div class="prof-header"><span class="prof-name">SFMC Engagement Platform</span><span class="prof-pct">98%</span></div><div class="prof-bar"><div class="prof-fill" data-width="98"></div></div></div>
+          <div class="prof-item"><div class="prof-header"><span class="prof-name">SQL & Data Extensions</span><span class="prof-pct">95%</span></div><div class="prof-bar"><div class="prof-fill" data-width="95"></div></div></div>
+          <div class="prof-item"><div class="prof-header"><span class="prof-name">Journey Builder & Automation Studio</span><span class="prof-pct">97%</span></div><div class="prof-bar"><div class="prof-fill" data-width="97"></div></div></div>
+          <div class="prof-item"><div class="prof-header"><span class="prof-name">API Integration & ETL</span><span class="prof-pct">90%</span></div><div class="prof-bar"><div class="prof-fill" data-width="90"></div></div></div>
+          <div class="prof-item"><div class="prof-header"><span class="prof-name">Compliance (HITRUST/SOC2)</span><span class="prof-pct">92%</span></div><div class="prof-bar"><div class="prof-fill" data-width="92"></div></div></div>
+          <div class="prof-item"><div class="prof-header"><span class="prof-name">Salesforce CRM (Sales/Service Cloud)</span><span class="prof-pct">88%</span></div><div class="prof-bar"><div class="prof-fill" data-width="88"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Compliance & Governance</div>
+        <div class="skill-items">
+          <span class="skill-chip featured">HITRUST</span>
+          <span class="skill-chip featured">SOC 2 Type II</span>
+          <span class="skill-chip">ISO 13485</span>
+          <span class="skill-chip">MDSAP</span>
+          <span class="skill-chip">CAN-SPAM</span>
+          <span class="skill-chip">GDPR</span>
+          <span class="skill-chip">Data Governance</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">DevOps & Cloud</div>
+        <div class="skill-items">
+          <span class="skill-chip">SFDX</span>
+          <span class="skill-chip">Copado</span>
+          <span class="skill-chip">Git</span>
+          <span class="skill-chip">GitLab CI/CD</span>
+          <span class="skill-chip">Jenkins</span>
+          <span class="skill-chip">AWS</span>
+          <span class="skill-chip">Azure</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS & EDUCATION -->
+<section id="certs">
+  <div class="section-label">Credentials</div>
+  <h2 class="section-title">Certifications & Education</h2>
+  <div class="certs-edu-grid">
+    <div class="reveal">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--gold);margin-bottom:20px;">Certifications</h3>
+      <div class="cert-cards">
+        <div class="cert-card">
+          <div class="cert-icon">☁️</div>
+          <div class="cert-info">
+            <h4>Salesforce Certified Administrator</h4>
+            <p>ADM 201 · Salesforce</p>
+          </div>
+          <span class="cert-badge">Active</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">🔧</div>
+          <div class="cert-info">
+            <h4>Certified Platform App Builder</h4>
+            <p>Salesforce</p>
+          </div>
+          <span class="cert-badge">Active</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">⚡</div>
+          <div class="cert-info">
+            <h4>Certified JavaScript Developer I</h4>
+            <p>Salesforce</p>
+          </div>
+          <span class="cert-badge">Active</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">🤖</div>
+          <div class="cert-info">
+            <h4>Salesforce Certified AI Associate</h4>
+            <p>Salesforce</p>
+          </div>
+          <span class="cert-badge">Active</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">🔄</div>
+          <div class="cert-info">
+            <h4>GitLab CI/CD Certified</h4>
+            <p>GitLab</p>
+          </div>
+          <span class="cert-badge">Active</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">🏛️</div>
+          <div class="cert-info">
+            <h4>Pega Certified System Architect</h4>
+            <p>Pegasystems</p>
+          </div>
+          <span class="cert-badge">Active</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--gold);margin-bottom:20px;">Education</h3>
+      <div class="edu-timeline">
+        <div class="edu-item">
+          <div class="edu-line">
+            <div class="edu-dot"></div>
+            <div class="edu-connector"></div>
+          </div>
+          <div class="edu-content">
+            <h4>Master of Science — Information Technology</h4>
+            <div class="inst">University of Denver</div>
+            <div class="dates">AUG 2024 — MAY 2026</div>
+            <div class="desc">Advancing expertise in enterprise systems, cloud architecture, and data-driven technology solutions.</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-line">
+            <div class="edu-dot"></div>
+            <div class="edu-connector"></div>
+          </div>
+          <div class="edu-content">
+            <h4>Bachelor of Engineering — Computer Science</h4>
+            <div class="inst">Anna University</div>
+            <div class="dates">AUG 2017 — MAY 2021</div>
+            <div class="desc">Foundation in software engineering, data structures, algorithms, and distributed systems.</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-line"><div class="edu-dot"></div></div>
+          <div class="edu-content">
+            <h4>Professional Experience</h4>
+            <div class="inst">5+ Years in Enterprise Salesforce & SFMC</div>
+            <div class="dates">2020 — PRESENT</div>
+            <div class="desc">FINRA (USA) · Cognizant Technology Solutions — delivering platform architecture across healthcare, financial services, and enterprise sectors.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT STRIP -->
+<div class="contact-strip" id="contact">
+  <div>
+    <h2>Ready to Build Something Exceptional?</h2>
+    <p>Open to SFMC Administrator, Architect, and Marketing Automation Lead roles.</p>
+  </div>
+  <div class="contact-actions">
+    <a href="mailto:kiruthikavenkat2704@gmail.com" class="btn-navy">Email Me</a>
+    <a href="https://linkedin.com" target="_blank" class="btn-ghost-navy">LinkedIn →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Kiruthika Venkatesan</div>
+  <p>SFMC Administrator & Architect · USA · 720-813-5590</p>
+  <p>© 2025 · Built for professional portfolio use</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Proficiency bars
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.prof-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width + '%';
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.proficiency-section').forEach(s => barObserver.observe(s));
+
+  // Active nav
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold)' : '';
+    });
+  });
+</script>
+</body>
+</html>
